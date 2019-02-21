@@ -43,7 +43,11 @@ public class Structure{
 
 	
 	private static char getUserInput(Queue q){		// Know what the user wants to do.
+	
+		Actions choices = new Actions();
+	
 		System.out.println("\nWhat do you want to do:");
+		
 		System.out.print("\n  U) Push");
 		if (q.isQfull){
 			System.out.print("  (Queue is already full)");
