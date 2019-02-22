@@ -37,4 +37,4 @@ class Stack extends Memory
 		}
 	}	// putQueue()
 	
-}	// Queue{}
+}	// Stack{}

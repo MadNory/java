@@ -2,6 +2,7 @@ class Memory{
 
 	protected int getloc = 0, putloc = 0;
 	protected int[] memory;
+	
 	public boolean isFull = false;
 	public boolean isEmpty = true;
 	
@@ -18,19 +19,11 @@ class Memory{
 
 	public void showMemory(){
 
-		if (this.isEmpty){
-
-			System.out.println("\n The memory is empty.There is nothing to display.");
-
-		} else {
+		for(int i = 0; i < this.putloc; ++i){
 			
-			for(int i = 0; i < this.putloc; ++i){
-				
-				System.out.println("[" + i + "] = " + this.memory[i]);
+			System.out.println("[" + i + "] = " + this.memory[i]);
 
-			}	// for()
-
-		} // if(this.isEmpty)
+		}	// for()
 
 		return;
 	}	// showMemory()

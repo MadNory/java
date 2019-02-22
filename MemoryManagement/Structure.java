@@ -4,7 +4,6 @@ enum Choices { U, O, S, C, Q }	// Possible Actions: Push, Pop, Show, Clear, Quit
 
 public class Structure{
 	
-	private static String userInput = "";
 
 	private static Scanner in = new Scanner(System.in);
 
@@ -13,12 +12,11 @@ public class Structure{
 
 	private static void push(Queue q){
 		
-		int n = 0;
-		
 		System.out.print("\nEnter a value to push: ");
 		
-		userInput = in.nextLine();
-		n = Integer.parseInt(userInput);
+		String userInput = in.nextLine();
+
+		int n = Integer.parseInt(userInput);
 		
 		q.putQueue(n);
 		
@@ -70,6 +68,7 @@ public class Structure{
 		}
 
 		System.out.print("\n  " + Choices.C + ") " + Options[Choices.C.ordinal()].getName());
+		
 		if (q.isEmpty){
 			System.out.print("  (Queue is empty)");
 		} else {
@@ -79,6 +78,7 @@ public class Structure{
 		System.out.println("\n  " + Choices.Q + ") " + Options[Choices.Q.ordinal()].getName());
 
 		System.out.print("\nEnter ");
+		
 		for(Choices c: Choices.values()){
 			System.out.print("'" + c + "' ");
 		}
@@ -91,24 +91,32 @@ public class Structure{
 		
 	}	// getUserInput()
 	
+	
+	private static void buildOptions(){
 
-	public static void main(String args[]){
-
-		int n = 0;
-
-		System.out.print("\nPlease enter the desired queue size: ");
-		
-		userInput = in.nextLine();
-		
-		n = Integer.parseInt(userInput);
-		
-		Queue queue = new Queue(n);
-		
 		Options[Choices.U.ordinal()] = new Action('U', "Push");
 		Options[Choices.O.ordinal()] = new Action('O', "Pop");
 		Options[Choices.S.ordinal()] = new Action('S', "Show");
 		Options[Choices.C.ordinal()] = new Action('C', "Clear");
 		Options[Choices.Q.ordinal()] = new Action('Q', "Quit");
+		
+		return;
+
+	}	// buildOptions()
+	
+	
+
+	public static void main(String args[]){
+
+		System.out.print("\nPlease enter the desired queue size: ");
+		
+		String userInput = in.nextLine();
+		
+		int n = Integer.parseInt(userInput);
+		
+		Queue queue = new Queue(n);
+
+		buildOptions();		// Build the user menu options
 
 		Choices userChoice;
 

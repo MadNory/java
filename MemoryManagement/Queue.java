@@ -28,11 +28,9 @@ class Queue extends Memory
 	}	// getQueue()
 
 	
-	public void putQueue(){
+	public void putQueue(int val){
 
-		if (this.isFull){
-			System.out.println("THE QUEUE IS ALREADY FULL!");
-		} else {
+		if (!this.isFull){
 			super.putQueue(val);
 		}
 		
