@@ -1,62 +1,53 @@
-class Queue{
-
-	private int getloc = 0, putloc = 0;
-	private int[] queue;
-	public boolean isQfull = false;
-	public boolean isQempty = true;
-	
-	
-	Queue(int qSize){
-		this.queue = new int[qSize];
-		this.getloc = this.putloc = 0;
-		this.isQfull = false;
-		this.isQempty = true;
+class Queue extends Memory
+{
+	Queue(int memSize){
+		super(memSize);
 	}	// constructor()
-	
-	
-	public int getMemSize(){
-		return this.queue.length;
-	}	// getMemSize()
-
 	
 	public int getQueue(){
 		
 		int retVal = 0;
 		
-		retVal = this.queue[0];
-		this.isQfull = false;
+		retVal = this.memory[0];
+		this.isFull = false;
 		
 		for (int i = 1; i < this.putloc; ++i){
-			this.queue[i - 1] = this.queue[i]; 
+			
+			this.memory[i - 1] = this.memory[i]; 
+
 		}
+
 		--this.putloc;
 
 		if (this.putloc == this.getloc){
-			this.isQempty = true;
+			this.isEmpty = true;
 		}	// if (this.putloc...)
 
 		return retVal;
 
 	}	// getQueue()
+
 	
 
-	public void putQueue(int val)
-	{
-		this.queue[this.putloc] = val;
+	public void putQueue(int val){
+
+		this.memory[this.putloc] = val;
 		++this.putloc;
-		this.isQempty = false;
+
+		this.isEmpty = false;
 			
-		if (this.putloc == this.queue.length){
-			this.isQfull = true;
+		if (this.putloc == this.memory.length){
+			this.isFull = true;
 		}	// if()
 
 		return;
 	}	// putQueue()
 	
+
 	
-	public void showQueue()
-	{
-		if (this.isQempty){
+	public void showQueue(){
+
+		if (this.isEmpty){
 			
 			System.out.println("\n The queue is empty.There is nothing to display.");
 
@@ -64,23 +55,14 @@ class Queue{
 			
 			for(int i = 0; i < this.putloc; ++i){
 				
-				System.out.println("[" + i + "] = " + this.queue[i]);
+				System.out.println("[" + i + "] = " + this.memory[i]);
 
 			}	// for()
 
-		} // if(this.isQempty)
+		} // if(this.isEmpty)
 
 		return;
 
 	}	// showQueue()
 	
-	
-	public void clearQueue()
-	{
-		this.putloc = this.getloc = 0;
-		this.isQempty = true;
-		this.isQfull = false;
-		
-	}	// clearQueue()
-
 }	// Queue{}
