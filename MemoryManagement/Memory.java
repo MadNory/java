@@ -4,6 +4,7 @@ class Memory{
 	protected int[] memory;
 	public boolean isFull = false;
 	public boolean isEmpty = true;
+
 	
 
 	Memory(int memSize){
@@ -14,12 +15,13 @@ class Memory{
 		this.isEmpty = true;
 
 	}	// constructor()
+	
 
 
 	public void showMemory(){
 
 		if (this.isEmpty){
-			
+
 			System.out.println("\n The memory is empty.There is nothing to display.");
 
 		} else {
@@ -36,12 +38,14 @@ class Memory{
 
 	}	// showMemory()
 	
+	
 
 	public int getMemSize(){
 		
 		return this.memory.length;
 		
 	}	// getMemSize()
+
 
 	
 	public void clearQueue(){
