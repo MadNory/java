@@ -13,10 +13,8 @@ class Queue extends Memory
 		retVal = this.memory[0];
 		this.isFull = false;
 		
-		for (int i = 1; i < this.putloc; ++i){
-			
+		for (int i = 1; i < this.putloc; ++i){		// slide over the memory by 1 position.
 			this.memory[i - 1] = this.memory[i]; 
-
 		}
 
 		--this.putloc;
@@ -30,18 +28,14 @@ class Queue extends Memory
 	}	// getQueue()
 
 	
+	public void putQueue(){
 
-	public void putQueue(int val){
-
-		this.memory[this.putloc] = val;
-		++this.putloc;
-
-		this.isEmpty = false;
-			
-		if (this.putloc == this.memory.length){
-			this.isFull = true;
-		}	// if()
-
+		if (this.isFull){
+			System.out.println("THE QUEUE IS ALREADY FULL!");
+		} else {
+			super.putQueue(val);
+		}
+		
 		return;
 	}	// putQueue()
 	

@@ -1,48 +1,40 @@
-class Queue extends Memory
+class Stack extends Memory
 {
-
-	Queue(int memSize){
+	Stack(int memSize){
 		super(memSize);
 	}	// constructor()
 	
 	
 	public int getQueue(){
 		
-		int retVal = 0;
+		int retVal = Integer.MIN_VALUE;
 		
-		retVal = this.memory[0];
-		this.isFull = false;
-		
-		for (int i = 1; i < this.putloc; ++i){
+		if (!this.isEmpty){
+
+			retVal = this.memory[this.getloc];
+			--this.getloc;
 			
-			this.memory[i - 1] = this.memory[i]; 
+			this.isFull = false;
 
+			if (this.getloc < 0){
+				
+				this.putloc = this.getloc = 0;
+				this.isEmpty = true;
+
+			}	// if(this.getloc)
 		}
-
-		--this.putloc;
-
-		if (this.putloc == this.getloc){
-			this.isEmpty = true;
-		}	// if (this.putloc...)
-
+			
 		return retVal;
 
 	}	// getQueue()
 
-	
 
 	public void putQueue(int val){
-
-		this.memory[this.putloc] = val;
-		++this.putloc;
-
-		this.isEmpty = false;
-			
-		if (this.putloc == this.memory.length){
-			this.isFull = true;
-		}	// if()
-
-		return;
+		
+		if (!this.isFull){
+			super.putQueue(val);
+			this.getloc = this.putloc - 1;
+		}
 	}	// putQueue()
 	
 }	// Queue{}

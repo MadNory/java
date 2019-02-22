@@ -4,7 +4,6 @@ class Memory{
 	protected int[] memory;
 	public boolean isFull = false;
 	public boolean isEmpty = true;
-
 	
 
 	Memory(int memSize){
@@ -15,7 +14,6 @@ class Memory{
 		this.isEmpty = true;
 
 	}	// constructor()
-	
 
 
 	public void showMemory(){
@@ -35,9 +33,7 @@ class Memory{
 		} // if(this.isEmpty)
 
 		return;
-
 	}	// showMemory()
-	
 	
 
 	public int getMemSize(){
@@ -56,4 +52,19 @@ class Memory{
 		
 	}	// clearQueue()
 	
-}
+	
+	protected void putQueue(int val){
+
+		this.memory[this.putloc] = val;
+		++this.putloc;
+
+		if (this.putloc == this.memory.length){
+			this.isFull = true;
+		}	// if()
+			
+		this.isEmpty = false;
+
+		return;
+	}	// putQueue()
+
+}	// Memory{}
