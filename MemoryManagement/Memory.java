@@ -4,6 +4,38 @@ class Memory{
 	protected int[] memory;
 	public boolean isFull = false;
 	public boolean isEmpty = true;
+	
+
+	Memory(int memSize){
+
+		this.memory = new int[memSize];
+		this.getloc = this.putloc = 0;
+		this.isFull = false;
+		this.isEmpty = true;
+
+	}	// constructor()
+
+
+	public void showMemory(){
+
+		if (this.isEmpty){
+			
+			System.out.println("\n The memory is empty.There is nothing to display.");
+
+		} else {
+			
+			for(int i = 0; i < this.putloc; ++i){
+				
+				System.out.println("[" + i + "] = " + this.memory[i]);
+
+			}	// for()
+
+		} // if(this.isEmpty)
+
+		return;
+
+	}	// showMemory()
+	
 
 	public int getMemSize(){
 		
@@ -19,15 +51,5 @@ class Memory{
 		this.isFull = false;
 		
 	}	// clearQueue()
-	
-	
-	Memory(int memSize){
-
-		this.memory = new int[memSize];
-		this.getloc = this.putloc = 0;
-		this.isFull = false;
-		this.isEmpty = true;
-
-	}	// constructor()
 	
 }

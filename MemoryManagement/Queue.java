@@ -1,8 +1,10 @@
 class Queue extends Memory
 {
+
 	Queue(int memSize){
 		super(memSize);
 	}	// constructor()
+	
 	
 	public int getQueue(){
 		
@@ -26,7 +28,6 @@ class Queue extends Memory
 		return retVal;
 
 	}	// getQueue()
-
 	
 
 	public void putQueue(int val){
@@ -43,26 +44,5 @@ class Queue extends Memory
 		return;
 	}	// putQueue()
 	
-
-	
-	public void showQueue(){
-
-		if (this.isEmpty){
-			
-			System.out.println("\n The queue is empty.There is nothing to display.");
-
-		} else {
-			
-			for(int i = 0; i < this.putloc; ++i){
-				
-				System.out.println("[" + i + "] = " + this.memory[i]);
-
-			}	// for()
-
-		} // if(this.isEmpty)
-
-		return;
-
-	}	// showQueue()
 	
 }	// Queue{}

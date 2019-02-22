@@ -141,7 +141,7 @@ public class Structure{
 					if (queue.isEmpty){
 						System.out.println("\nQueue is empty! There is nothing to display.");
 					} else {
-						queue.showQueue();
+						queue.showMemory();
 					}
 					 break;
 					 
