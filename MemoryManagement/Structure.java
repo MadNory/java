@@ -1,12 +1,18 @@
 import java.util.Scanner;
 
+enum Choices { U, O, S, C, Q }	// Possible Actions: Push, Pop, Show, Clear, Quit respectively.
+
 public class Structure{
 	
 	private static String userInput = "";
+
 	private static int n = 0;
+
 	private static Scanner in = new Scanner(System.in);
 
-	
+	private static Action Options[] = new Action[Choices.Q.ordinal() + 1];
+
+
 	private static void push(Queue q){
 		
 		System.out.print("\nEnter a value to push: ");
@@ -44,34 +50,38 @@ public class Structure{
 	
 	private static char getUserInput(Queue q){		// Know what the user wants to do.
 	
-		Actions choices = new Actions();
-	
 		System.out.println("\nWhat do you want to do:");
 		
-		System.out.print("\n  U) Push");
+		System.out.print("\n  " + Choices.U + ") " + Options[Choices.U.ordinal()].getName());
 		if (q.isQfull){
 			System.out.print("  (Queue is already full)");
 		}
 
-		System.out.print("\n  O) Pop");
+		System.out.print("\n  " + Choices.O + ") " + Options[Choices.O.ordinal()].getName());
 		if (q.isQempty){
 			System.out.print("  (Queue is empty)");
 		}
 		
-		System.out.print("\n  S) Show");
+		System.out.print("\n  " + Choices.S + ") " + Options[Choices.S.ordinal()].getName());
 		if (q.isQempty){
 			System.out.print("  (Queue is empty)");
 		}
 
-		System.out.print("\n  C) Clear");
+		System.out.print("\n  " + Choices.C + ") " + Options[Choices.C.ordinal()].getName());
 		if (q.isQempty){
 			System.out.print("  (Queue is empty)");
 		} else {
 			System.out.print("  (Queue has contents)");
 		}
 		
-		System.out.println("\n  Q) Quit");
-		System.out.print("\nU, O, S, C, or Q: ");
+		System.out.println("\n  " + Choices.Q + ") " + Options[Choices.Q.ordinal()].getName());
+
+		System.out.print("\nEnter ");
+		for(Choices c: Choices.values()){
+			System.out.print("'" + c + "' ");
+		}
+		
+		System.out.print(": ");
 		
 		String userInput = in.nextLine();
 		
@@ -90,8 +100,14 @@ public class Structure{
 		
 		Queue queue = new Queue(n);
 		
+		Options[Choices.U.ordinal()] = new Action('U', "Push");
+		Options[Choices.O.ordinal()] = new Action('O', "Pop");
+		Options[Choices.S.ordinal()] = new Action('S', "Show");
+		Options[Choices.C.ordinal()] = new Action('C', "Clear");
+		Options[Choices.Q.ordinal()] = new Action('Q', "Quit");
+
 		char userChoice = '~';
-		
+
 		do{
 
 			userChoice = getUserInput(queue);

@@ -1,4 +1,4 @@
-class Action {
+public class Action {
 	
 	private char code = '~';
 	private String name = "";
@@ -18,13 +18,7 @@ class Action {
 
 }	// Action()
 
-
-enum Choices {
-	
-	U, O, S, C, Q
-	
-}	// Choices{}
-
+/*
 
 public class Actions{
 
@@ -41,7 +35,7 @@ public class Actions{
 		for (Action choice: Options){
 			System.out.println(choice.getCode() + " - " + choice.getName());
 		}
-
 	}	// main()
 	
 }	// Actions()
+*/
