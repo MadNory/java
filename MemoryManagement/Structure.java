@@ -6,36 +6,27 @@ class MemOptions{
 	
 	char memType = '~';
 	int memSize = 0;
-	char memAction = '~';
 
 };	// MemOptions{}
 
 
 public class Structure{
-	
-
-	private static Scanner in = new Scanner(System.in);
 
 	private static Action Options[] = new Action[Choices.Q.ordinal() + 1];
 
+	
+	private static void buildOptions(){
 
-	private static void push(Queue q){
-		
-		System.out.print("\nEnter a value to push: ");
-		
-		String userInput = in.nextLine();
-
-		int n = Integer.parseInt(userInput);
-		
-		q.putQueue(n);
-		
-		if (q.isFull){
-			System.out.println("\nQueue is now full.");
-		}
+		Options[Choices.U.ordinal()] = new Action('U', "Push");
+		Options[Choices.O.ordinal()] = new Action('O', "Pop");
+		Options[Choices.S.ordinal()] = new Action('S', "Show");
+		Options[Choices.C.ordinal()] = new Action('C', "Clear");
+		Options[Choices.Q.ordinal()] = new Action('Q', "Quit");
 		
 		return;
 
-	}	// push()
+	}	// buildOptions()
+
 
 
 	private static void pop(Queue q){
@@ -57,21 +48,10 @@ public class Structure{
 	}	// pop()
 	
 	
-	
-	private static void buildOptions(){
-
-		Options[Choices.U.ordinal()] = new Action('U', "Push");
-		Options[Choices.O.ordinal()] = new Action('O', "Pop");
-		Options[Choices.S.ordinal()] = new Action('S', "Show");
-		Options[Choices.C.ordinal()] = new Action('C', "Clear");
-		Options[Choices.Q.ordinal()] = new Action('Q', "Quit");
-		
-		return;
-
-	}	// buildOptions()
-	
 
 	private static void getUserOptions(MemOptions mOptions){
+
+		Scanner in = new Scanner(System.in);
 
 		System.out.print("\nPlease enter the desired queue size: ");
 		
@@ -90,8 +70,11 @@ public class Structure{
 		}while(mType != 'S' &&  mType != 'Q');
 		
 		mOptions.memType = mType;
+
 		return;
-	}	// getUserOptions()
+
+		}	// getUserOptions()
+	
 	
 	private static MemOptions userOptions = new MemOptions();
 
@@ -120,13 +103,8 @@ public class Structure{
 					
 					switch(userChoice){
 						
-						case U: 	// push()
-						
-							if (queue.isFull){
-								System.out.println("\nQueue is already full! Pop a value first.");
-							} else {
-								push(queue);
-							}
+						case U: 				// push()
+							queue.push();
 							 break;
 							 
 						case O:	// pop()
@@ -170,7 +148,6 @@ public class Structure{
 			default:
 				break;
 		}	// switch(userInput)
-
 	
 		return;
 	}	// main()

@@ -18,7 +18,6 @@ class Memory{
 
 	}	// constructor()
 
-	
 
 	public void showMemory(){
 
@@ -64,6 +63,35 @@ class Memory{
 
 		return;
 	}	// putQueue()
+
+	
+
+	public void push(){
+		
+		if (this.isFull){
+			
+			System.out.println("\nQueue is already full! Pop a value first.");
+			
+		} else {
+
+			Scanner in = new Scanner(System.in);
+
+			System.out.print("\nEnter a value to push: ");
+			
+			String userInput = in.nextLine();
+
+			int n = Integer.parseInt(userInput);
+			
+			this.putQueue(n);
+			
+			if (this.isFull){
+				System.out.println("\nQueue is now full.");
+			}
+		}
+		
+		return;
+
+	}	// push()
 
 	
 
