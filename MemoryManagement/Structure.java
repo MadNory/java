@@ -66,15 +66,26 @@ public class Structure{
 		getUserOptions(userOptions);
 
 		buildOptions();		// Build the user menu options
-		Choices userChoice;
+		Choices userChoice = Choices.Q;
 		
 		switch(userOptions.memType){
 			
 			case 'S':
 			
 				stack = new Stack(userOptions.memSize);
+				boolean choiceInvalid = true;
+				
 				do{
-					userChoice = stack.getUserInput(Options);
+					do{
+						try{
+							userChoice = stack.getUserInput(Options);
+							choiceInvalid = false;
+						} catch (Exception e){
+							System.out.println("\nChoice invalid!  Please try again.");
+							choiceInvalid = true;
+							continue;
+						}
+					}while(choiceInvalid);
 					
 					switch(userChoice){
 						
@@ -91,7 +102,7 @@ public class Structure{
 							 break;
 							 
 						case C:					// clear()
-							stack.clearQueue();
+							stack.clearMemory();
 							 break;
 						
 						case Q:
@@ -127,7 +138,7 @@ public class Structure{
 							 break;
 							 
 						case C:					// clear()
-							queue.clearQueue();
+							queue.clearMemory();
 							 break;
 						
 						case Q:

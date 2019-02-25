@@ -6,7 +6,7 @@ class Stack extends Memory
 	}	// constructor()
 	
 	
-	public int getQueue(){
+	public int getValue(){
 		
 		int retVal = Integer.MIN_VALUE;
 		
@@ -27,7 +27,7 @@ class Stack extends Memory
 			
 		return retVal;
 
-	}	// getQueue()
+	}	// getValue()
 
 
 	public void pop(){
@@ -38,7 +38,7 @@ class Stack extends Memory
 			
 		} else {
 	
-			int n = this.getQueue();
+			int n = this.getValue();
 			
 			if (n != Integer.MIN_VALUE){
 				System.out.println("\nPopped value: " + n);

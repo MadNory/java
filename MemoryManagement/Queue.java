@@ -7,7 +7,7 @@ class Queue extends Memory
 
 	
 	
-	public int getQueue(){
+	public int getValue(){
 		
 		int retVal = Integer.MIN_VALUE;
 		
@@ -26,7 +26,7 @@ class Queue extends Memory
 
 		return retVal;
 
-	}	// getQueue()
+	}	// getValue()
 	
 
 
@@ -38,7 +38,7 @@ class Queue extends Memory
 			
 		} else {
 	
-			int n = this.getQueue();
+			int n = this.getValue();
 			
 			if (n != Integer.MIN_VALUE){
 				System.out.println("\nPopped value: " + n);
