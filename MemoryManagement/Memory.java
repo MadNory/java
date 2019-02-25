@@ -71,14 +71,17 @@ class Memory{
 	
 	protected void putQueue(int val){
 
-		this.memory[this.putloc] = val;
-		++this.putloc;
-
-		if (this.putloc == this.memory.length){
-			this.isFull = true;
-		}	// if()
+		if (!this.isFull){
 			
-		this.isEmpty = false;
+			this.memory[this.putloc] = val;
+			++this.putloc;
+
+			if (this.putloc == this.memory.length){
+				this.isFull = true;
+			}	// if()
+				
+			this.isEmpty = false;
+		}	// if (!this.isFull)
 
 		return;
 	}	// putQueue()
@@ -87,25 +90,19 @@ class Memory{
 
 	public void push(){
 		
+
+		Scanner in = new Scanner(System.in);
+
+		System.out.print("\nEnter a value to push: ");
+		
+		String userInput = in.nextLine();
+
+		int n = Integer.parseInt(userInput);
+		
+		this.putQueue(n);
+		
 		if (this.isFull){
-			
-			System.out.println("\nQueue is already full! Pop a value first.");
-			
-		} else {
-
-			Scanner in = new Scanner(System.in);
-
-			System.out.print("\nEnter a value to push: ");
-			
-			String userInput = in.nextLine();
-
-			int n = Integer.parseInt(userInput);
-			
-			this.putQueue(n);
-			
-			if (this.isFull){
-				System.out.println("\nQueue is now full.");
-			}
+			System.out.println("\nQueue is now full.");
 		}
 		
 		return;

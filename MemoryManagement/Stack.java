@@ -52,7 +52,21 @@ class Stack extends Memory
 		return;
 
 	}	// pop()
+
 	
+	public void push(){
+		
+		if (this.isFull){
+			System.out.println("\nQueue is already full! Pop a value first.");
+		} else {
+			super.push();
+		}
+		
+		this.getloc = this.putloc - 1;
+
+		return;
+
+	}	// push()
 	
 	
 }	// Stack{}

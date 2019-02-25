@@ -52,5 +52,23 @@ class Queue extends Memory
 		return;
 
 	}	// pop()
+
+	
+	
+	public void push(){
+		
+		if (this.isFull){
+			
+			System.out.println("\nQueue is already full! Pop a value first.");
+			
+		} else {
+
+			super.push();
+
+		}
+
+		return;
+
+	}	// push()
 	
 }	// Queue{}

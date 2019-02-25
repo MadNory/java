@@ -57,6 +57,7 @@ public class Structure{
 	
 	private static MemOptions userOptions = new MemOptions();
 
+
 	public static void main(String args[]){
 		
 		Queue queue;
@@ -70,14 +71,45 @@ public class Structure{
 		switch(userOptions.memType){
 			
 			case 'S':
+			
 				stack = new Stack(userOptions.memSize);
+				do{
+					userChoice = stack.getUserInput(Options);
+					
+					switch(userChoice){
+						
+						case U: 				// push()
+							stack.push();
+							break;
+							 
+						case O:					// pop()
+							stack.pop();
+							break;
+
+						case S:					// show()
+							stack.showMemory();
+							 break;
+							 
+						case C:					// clear()
+							stack.clearQueue();
+							 break;
+						
+						case Q:
+							break;
+						
+						default:
+							break;
+
+					}	// switch()
+
+				}while(userChoice != Choices.Q);
 				break;
 				
 				
 			case 'Q':
+			
 				queue = new Queue(userOptions.memSize);
 				do{
-
 					userChoice = queue.getUserInput(Options);
 					
 					switch(userChoice){
@@ -86,15 +118,15 @@ public class Structure{
 							queue.push();
 							break;
 							 
-						case O:	// pop()
+						case O:					// pop()
 							queue.pop();
 							break;
 
-						case S:	// show()
+						case S:					// show()
 							queue.showMemory();
 							 break;
 							 
-						case C:	// clear()
+						case C:					// clear()
 							queue.clearQueue();
 							 break;
 						
@@ -102,8 +134,8 @@ public class Structure{
 							break;
 						
 						default:
-		//					System.out.println("choice = " + userChoice);
 							break;
+
 					}	// switch()
 
 				}while(userChoice != Choices.Q);
