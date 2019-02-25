@@ -1,3 +1,4 @@
+
 class Stack extends Memory
 {
 	Stack(int memSize){
@@ -36,5 +37,7 @@ class Stack extends Memory
 			this.getloc = this.putloc - 1;
 		}
 	}	// putQueue()
+	
+	
 	
 }	// Stack{}

@@ -3,9 +3,12 @@ import java.util.Scanner;
 enum Choices { U, O, S, C, Q }	// Possible Actions: Push, Pop, Show, Clear, Quit respectively.
 
 class MemOptions{
+	
 	char memType = '~';
 	int memSize = 0;
-};
+	char memAction = '~';
+
+};	// MemOptions{}
 
 
 public class Structure{
@@ -54,94 +57,6 @@ public class Structure{
 	}	// pop()
 	
 	
-	private static Choices getUserInput(Stack s){		// Know what the user wants to do.
-	
-		System.out.println("\nWhat do you want to do:");
-		
-		System.out.print("\n  " + Choices.U + ") " + Options[Choices.U.ordinal()].getName());
-		if (s.isFull){
-			System.out.print("  (Queue is already full)");
-		}
-
-		System.out.print("\n  " + Choices.O + ") " + Options[Choices.O.ordinal()].getName());
-		if (s.isEmpty){
-			System.out.print("  (Queue is empty)");
-		}
-		
-		System.out.print("\n  " + Choices.S + ") " + Options[Choices.S.ordinal()].getName());
-		if (s.isEmpty){
-			System.out.print("  (Queue is empty)");
-		}
-
-		System.out.print("\n  " + Choices.C + ") " + Options[Choices.C.ordinal()].getName());
-		
-		if (s.isEmpty){
-			System.out.print("  (Queue is empty)");
-		} else {
-			System.out.print("  (Queue has contents)");
-		}
-		
-		System.out.println("\n  " + Choices.Q + ") " + Options[Choices.Q.ordinal()].getName());
-
-		System.out.print("\nEnter ");
-		
-		for(Choices c: Choices.values()){
-			System.out.print("'" + c + "' ");
-		}
-		
-		System.out.print(": ");
-		
-		String userInput = in.nextLine();
-		
-		return Choices.valueOf(userInput.toUpperCase());
-		
-	}	// getUserInput()
-	
-
-	
-	private static Choices getUserInput(Queue q){		// Know what the user wants to do.
-	
-		System.out.println("\nWhat do you want to do:");
-		
-		System.out.print("\n  " + Choices.U + ") " + Options[Choices.U.ordinal()].getName());
-		if (q.isFull){
-			System.out.print("  (Queue is already full)");
-		}
-
-		System.out.print("\n  " + Choices.O + ") " + Options[Choices.O.ordinal()].getName());
-		if (q.isEmpty){
-			System.out.print("  (Queue is empty)");
-		}
-		
-		System.out.print("\n  " + Choices.S + ") " + Options[Choices.S.ordinal()].getName());
-		if (q.isEmpty){
-			System.out.print("  (Queue is empty)");
-		}
-
-		System.out.print("\n  " + Choices.C + ") " + Options[Choices.C.ordinal()].getName());
-		
-		if (q.isEmpty){
-			System.out.print("  (Queue is empty)");
-		} else {
-			System.out.print("  (Queue has contents)");
-		}
-		
-		System.out.println("\n  " + Choices.Q + ") " + Options[Choices.Q.ordinal()].getName());
-
-		System.out.print("\nEnter ");
-		
-		for(Choices c: Choices.values()){
-			System.out.print("'" + c + "' ");
-		}
-		
-		System.out.print(": ");
-		
-		String userInput = in.nextLine();
-		
-		return Choices.valueOf(userInput.toUpperCase());
-		
-	}	// getUserInput()
-		
 	
 	private static void buildOptions(){
 
@@ -155,17 +70,14 @@ public class Structure{
 
 	}	// buildOptions()
 	
-	
 
-	private void getUserOptions(MemOptions mOptions){
+	private static void getUserOptions(MemOptions mOptions){
 
 		System.out.print("\nPlease enter the desired queue size: ");
 		
 		String userInput = in.nextLine();
 		
-		int n = Integer.parseInt(userInput);
-
-		mOptions.memSize = n;
+		mOptions.memSize = Integer.parseInt(userInput);
 		
 		char mType = '~';
 		
@@ -181,85 +93,84 @@ public class Structure{
 		return;
 	}	// getUserOptions()
 	
-	
+	private static MemOptions userOptions = new MemOptions();
+
 	public static void main(String args[]){
 		
 		Queue queue;
 		Stack stack;
-		MemOptions userOptions = new MemOptions();
 		
 		getUserOptions(userOptions);
 
+		buildOptions();		// Build the user menu options
+		Choices userChoice;
+		
 		switch(userOptions.memType){
 			
 			case 'S':
-				stack = new Stack(n);
+				stack = new Stack(userOptions.memSize);
 				break;
 				
 				
 			case 'Q':
-				queue = new Queue(n);
+				queue = new Queue(userOptions.memSize);
+				do{
+
+					userChoice = queue.getUserInput(Options);
+					
+					switch(userChoice){
+						
+						case U: 	// push()
+						
+							if (queue.isFull){
+								System.out.println("\nQueue is already full! Pop a value first.");
+							} else {
+								push(queue);
+							}
+							 break;
+							 
+						case O:	// pop()
+						
+							if (queue.isEmpty){
+								System.out.println("\nQueue is empty! There is nothing to pop.");
+							} else {
+								pop(queue);
+							}
+							 break;
+
+						case S:	// show()
+						
+							if (queue.isEmpty){
+								System.out.println("\nQueue is empty! There is nothing to display.");
+							} else {
+								queue.showMemory();
+							}
+							 break;
+							 
+						case C:	// clear()
+							if (queue.isEmpty){
+								System.out.println("\nThe queue is currently empty. No need to clear.");
+							} else {
+								queue.clearQueue();
+								System.out.println("\nThe queue has been cleared.");
+							}
+							 break;
+						
+						case Q:
+							break;
+						
+						default:
+		//					System.out.println("choice = " + userChoice);
+							break;
+					}	// switch()
+
+				}while(userChoice != Choices.Q);
 				break;
 				
 			default:
 				break;
 		}	// switch(userInput)
-		
-		buildOptions();		// Build the user menu options
 
-		Choices userChoice;
-
-		do{
-
-			userChoice = getUserInput(queue);
-			
-			switch(userChoice){
-				
-				case U: 	// push()
-				
-					if (queue.isFull){
-						System.out.println("\nQueue is already full! Pop a value first.");
-					} else {
-						push(queue);
-					}
-					 break;
-					 
-				case O:	// pop()
-				
-					if (queue.isEmpty){
-						System.out.println("\nQueue is empty! There is nothing to pop.");
-					} else {
-						pop(queue);
-					}
-					 break;
-
-				case S:	// show()
-				
-					if (queue.isEmpty){
-						System.out.println("\nQueue is empty! There is nothing to display.");
-					} else {
-						queue.showMemory();
-					}
-					 break;
-					 
-				case C:	// clear()
-					if (queue.isEmpty){
-						System.out.println("\nThe queue is currently empty. No need to clear.");
-					} else {
-						queue.clearQueue();
-						System.out.println("\nThe queue has been cleared.");
-					}
-					 break;
-				
-				case Q:
-					break;
-				
-				default:
-//					System.out.println("choice = " + userChoice);
-					break;
-			}	// switch()
-
-		}while(userChoice != Choices.Q);
 	
 		return;
 	}	// main()
