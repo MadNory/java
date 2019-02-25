@@ -2,6 +2,12 @@ import java.util.Scanner;
 
 enum Choices { U, O, S, C, Q }	// Possible Actions: Push, Pop, Show, Clear, Quit respectively.
 
+class MemOptions{
+	char memType = '~';
+	int memSize = 0;
+};
+
+
 public class Structure{
 	
 
@@ -46,6 +52,51 @@ public class Structure{
 		return;
 
 	}	// pop()
+	
+	
+	private static Choices getUserInput(Stack s){		// Know what the user wants to do.
+	
+		System.out.println("\nWhat do you want to do:");
+		
+		System.out.print("\n  " + Choices.U + ") " + Options[Choices.U.ordinal()].getName());
+		if (s.isFull){
+			System.out.print("  (Queue is already full)");
+		}
+
+		System.out.print("\n  " + Choices.O + ") " + Options[Choices.O.ordinal()].getName());
+		if (s.isEmpty){
+			System.out.print("  (Queue is empty)");
+		}
+		
+		System.out.print("\n  " + Choices.S + ") " + Options[Choices.S.ordinal()].getName());
+		if (s.isEmpty){
+			System.out.print("  (Queue is empty)");
+		}
+
+		System.out.print("\n  " + Choices.C + ") " + Options[Choices.C.ordinal()].getName());
+		
+		if (s.isEmpty){
+			System.out.print("  (Queue is empty)");
+		} else {
+			System.out.print("  (Queue has contents)");
+		}
+		
+		System.out.println("\n  " + Choices.Q + ") " + Options[Choices.Q.ordinal()].getName());
+
+		System.out.print("\nEnter ");
+		
+		for(Choices c: Choices.values()){
+			System.out.print("'" + c + "' ");
+		}
+		
+		System.out.print(": ");
+		
+		String userInput = in.nextLine();
+		
+		return Choices.valueOf(userInput.toUpperCase());
+		
+	}	// getUserInput()
+	
 
 	
 	private static Choices getUserInput(Queue q){		// Know what the user wants to do.
@@ -90,7 +141,7 @@ public class Structure{
 		return Choices.valueOf(userInput.toUpperCase());
 		
 	}	// getUserInput()
-	
+		
 	
 	private static void buildOptions(){
 
@@ -106,16 +157,54 @@ public class Structure{
 	
 	
 
-	public static void main(String args[]){
+	private void getUserOptions(MemOptions mOptions){
 
 		System.out.print("\nPlease enter the desired queue size: ");
 		
 		String userInput = in.nextLine();
 		
 		int n = Integer.parseInt(userInput);
-		
-		Queue queue = new Queue(n);
 
+		mOptions.memSize = n;
+		
+		char mType = '~';
+		
+		do{
+			System.out.print("\nPlease enter the memory type(S,Q): ");
+			userInput = in.nextLine();
+			userInput = userInput.toUpperCase();
+			mType = userInput.charAt(0);
+
+		}while(mType != 'S' &&  mType != 'Q');
+		
+		mOptions.memType = mType;
+		return;
+	}	// getUserOptions()
+	
+	
+	public static void main(String args[]){
+		
+		Queue queue;
+		Stack stack;
+		MemOptions userOptions = new MemOptions();
+		
+		getUserOptions(userOptions);
+
+		switch(userOptions.memType){
+			
+			case 'S':
+				stack = new Stack(n);
+				break;
+				
+				
+			case 'Q':
+				queue = new Queue(n);
+				break;
+				
+			default:
+				break;
+		}	// switch(userInput)
+		
 		buildOptions();		// Build the user menu options
 
 		Choices userChoice;
