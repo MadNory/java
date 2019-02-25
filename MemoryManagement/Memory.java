@@ -5,10 +5,10 @@ class Memory{
 	protected int getloc = 0, putloc = 0;
 	protected int[] memory;
 	
-	public boolean isFull = false;
-	public boolean isEmpty = true;
-	
+	protected boolean isFull = false;
+	protected boolean isEmpty = true;
 
+	
 	Memory(int memSize){
 
 		this.memory = new int[memSize];
