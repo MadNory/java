@@ -18,10 +18,11 @@ class Memory{
 
 	}	// constructor()
 
+	
 
 	public void showMemory(){
 
-		if (queue.isEmpty){
+		if (this.isEmpty){
 
 			System.out.println("\nQueue is empty! There is nothing to display.");
 
@@ -49,10 +50,21 @@ class Memory{
 	
 	public void clearQueue(){
 		
-		this.putloc = this.getloc = 0;
-		this.isEmpty = true;
-		this.isFull = false;
-		
+		if (this.isEmpty){
+			
+			System.out.println("\nThe queue is currently empty. No need to clear.");
+			
+		} else {
+			
+			this.putloc = this.getloc = 0;
+			this.isEmpty = true;
+			this.isFull = false;
+			System.out.println("\nThe queue has been cleared.");
+			
+		}	// if(this.isEmpty)				
+
+		return;
+
 	}	// clearQueue()
 
 	

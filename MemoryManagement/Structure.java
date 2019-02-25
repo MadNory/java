@@ -28,7 +28,6 @@ public class Structure{
 	}	// buildOptions()
 
 
-
 	private static void getUserOptions(MemOptions mOptions){
 
 		Scanner in = new Scanner(System.in);
@@ -88,7 +87,7 @@ public class Structure{
 							break;
 							 
 						case O:	// pop()
-							pop(queue);
+							queue.pop();
 							break;
 
 						case S:	// show()
@@ -96,12 +95,7 @@ public class Structure{
 							 break;
 							 
 						case C:	// clear()
-							if (queue.isEmpty){
-								System.out.println("\nThe queue is currently empty. No need to clear.");
-							} else {
-								queue.clearQueue();
-								System.out.println("\nThe queue has been cleared.");
-							}
+							queue.clearQueue();
 							 break;
 						
 						case Q:
