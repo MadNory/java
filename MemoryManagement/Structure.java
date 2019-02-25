@@ -29,26 +29,6 @@ public class Structure{
 
 
 
-	private static void pop(Queue q){
-		
-		int n = 0;
-		
-		n = q.getQueue();
-		
-		if (n != Integer.MIN_VALUE){
-			System.out.println("\nPopped value: " + n);
-		}
-
-		if (q.isEmpty){
-			System.out.println("Queue is now empty.");
-		}
-		
-		return;
-
-	}	// pop()
-	
-	
-
 	private static void getUserOptions(MemOptions mOptions){
 
 		Scanner in = new Scanner(System.in);
@@ -105,24 +85,14 @@ public class Structure{
 						
 						case U: 				// push()
 							queue.push();
-							 break;
+							break;
 							 
 						case O:	// pop()
-						
-							if (queue.isEmpty){
-								System.out.println("\nQueue is empty! There is nothing to pop.");
-							} else {
-								pop(queue);
-							}
-							 break;
+							pop(queue);
+							break;
 
 						case S:	// show()
-						
-							if (queue.isEmpty){
-								System.out.println("\nQueue is empty! There is nothing to display.");
-							} else {
-								queue.showMemory();
-							}
+							queue.showMemory();
 							 break;
 							 
 						case C:	// clear()

@@ -21,11 +21,18 @@ class Memory{
 
 	public void showMemory(){
 
-		for(int i = 0; i < this.putloc; ++i){
-			
-			System.out.println("[" + i + "] = " + this.memory[i]);
+		if (queue.isEmpty){
 
-		}	// for()
+			System.out.println("\nQueue is empty! There is nothing to display.");
+
+		} else {
+
+			for(int i = 0; i < this.putloc; ++i){
+				
+				System.out.println("[" + i + "] = " + this.memory[i]);
+
+			}	// for()
+		}	// if(queue...)
 
 		return;
 	}	// showMemory()

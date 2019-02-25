@@ -30,13 +30,28 @@ class Stack extends Memory
 	}	// getQueue()
 
 
-	public void putQueue(int val){
-		
-		if (!this.isFull){
-			super.putQueue(val);
-			this.getloc = this.putloc - 1;
+	public void pop(){
+
+		if (this.isEmpty){
+
+			System.out.println("\nQueue is empty! There is nothing to pop.");
+			
+		} else {
+	
+			int n = this.getQueue();
+			
+			if (n != Integer.MIN_VALUE){
+				System.out.println("\nPopped value: " + n);
+			}
+
+			if (this.isEmpty){
+				System.out.println("Queue is now empty.");
+			}
 		}
-	}	// putQueue()
+		
+		return;
+
+	}	// pop()
 	
 	
 	

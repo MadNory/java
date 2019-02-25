@@ -4,6 +4,7 @@ class Queue extends Memory
 	Queue(int memSize){
 		super(memSize);
 	}	// constructor()
+
 	
 	
 	public int getQueue(){
@@ -26,6 +27,7 @@ class Queue extends Memory
 		return retVal;
 
 	}	// getQueue()
+	
 
 
 	public void pop(){
@@ -50,9 +52,5 @@ class Queue extends Memory
 		return;
 
 	}	// pop()
-	
-	
-
-
 	
 }	// Queue{}
