@@ -81,7 +81,7 @@ public class Structure{
 						try{
 							userChoice = stack.getUserInput(Options);
 							choiceInvalid = false;
-						} catch (IllegalArgumentException e){
+						} catch (Exception e){
 							System.out.println("\nChoice invalid!  Please try again.");
 							choiceInvalid = true;
 							continue;
