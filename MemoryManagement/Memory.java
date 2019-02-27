@@ -138,38 +138,38 @@ abstract class Memory{
 
 	
 
-	public Choices getUserInput(Action[] options){		// Know what the user wants to do.
+	public Choices getUserInput(){		// Know what the user wants to do.
 	
 		Scanner in = new Scanner(System.in);
 		String userInput = "";
 			
 		System.out.println("\nWhat do you want to do:");
 		
-		System.out.print("\n  " + Choices.U + ") " + options[Choices.U.ordinal()].getName());
+		System.out.print("\n  " + Choices.U + ") " + Choices.U.getDesc());
 		if (this.isFull){
 			System.out.print("  (Queue is already full)");
 		}
 
-		System.out.print("\n  " + Choices.O + ") " + options[Choices.O.ordinal()].getName());
+		System.out.print("\n  " + Choices.O + ") " + Choices.O.getDesc());
 		if (this.isEmpty){
 			System.out.print("  (Queue is empty)");
 		}
 		
-		System.out.print("\n  " + Choices.S + ") " + options[Choices.S.ordinal()].getName());
+		System.out.print("\n  " + Choices.S + ") " + Choices.S.getDesc());
 		if (this.isEmpty){
 			System.out.print("  (Queue is empty)");
 		}
 
-		System.out.print("\n  " + Choices.C + ") " + options[Choices.C.ordinal()].getName());
+		System.out.print("\n  " + Choices.C + ") " + Choices.C.getDesc());
 		if (this.isEmpty){
 			System.out.print("  (Queue is empty)");
 		} else {
 			System.out.print("  (Queue has contents)");
 		}
 		
-		System.out.println("\n  " + Choices.G + ") " + options[Choices.G.ordinal()].getName());
+		System.out.println("\n  " + Choices.G + ") " + Choices.G.getDesc());
 
-		System.out.println("\n  " + Choices.Q + ") " + options[Choices.Q.ordinal()].getName());
+		System.out.println("\n  " + Choices.Q + ") " + Choices.Q.getDesc());
 
 		System.out.print("\nEnter ");
 		

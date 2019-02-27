@@ -1,6 +1,29 @@
 import java.util.Scanner;
 
-enum Choices { U, O, S, C, Q, G }	// Possible Actions: Push, Pop, Show, Clear, Quit respectively.
+/*
+enum Choices { U , O, S, C, Q, G }	// Possible Actions: Push, Pop, Show, Clear, Quit respectively.
+*/
+
+enum Choices 
+{ 	
+	U ("Push"), 
+	O ("Pop"), 
+	S ("Show"), 
+	C ("Clear"), 
+	Q ("Quit"), 
+	G ("Size");
+	
+	private final String desc;
+	
+	Choices(String name){
+		this.desc = name;
+	}
+	
+	String getDesc(){
+		return this.desc;
+	}
+	
+};	// Possible Actions: Push, Pop, Show, Clear, Quit respectively.
 
 class MemOptions{
 	
@@ -11,22 +34,6 @@ class MemOptions{
 
 
 public class Structure{
-
-	private static Action Options[] = new Action[Choices.values().length];
-
-	
-	private static void buildOptions(){
-
-		Options[Choices.U.ordinal()] = new Action('U', "Push");
-		Options[Choices.O.ordinal()] = new Action('O', "Pop");
-		Options[Choices.S.ordinal()] = new Action('S', "Show");
-		Options[Choices.C.ordinal()] = new Action('C', "Clear");
-		Options[Choices.G.ordinal()] = new Action('G', "Size");
-		Options[Choices.Q.ordinal()] = new Action('Q', "Quit");
-		
-		return;
-
-	}	// buildOptions()
 
 
 	private static void getUserOptions(MemOptions mOptions){
@@ -66,20 +73,20 @@ public class Structure{
 		
 		getUserOptions(userOptions);
 
-		buildOptions();		// Build the user menu options
+//		buildOptions();		// Build the user menu options
 		Choices userChoice = Choices.Q;
 		
 		switch(userOptions.memType){
 			
 			case 'S':
 			
-				stack = new Stack(userOptions.memSize);
+				stack = new Stack(userOptions.memSize);	// configure the memory
 				boolean choiceInvalid = true;
 				
 				do{
 					do{
 						try{
-							userChoice = stack.getUserInput(Options);
+							userChoice = stack.getUserInput();
 							choiceInvalid = false;
 						} catch (IllegalArgumentException e){
 							System.out.println("\nChoice invalid!  Please try again.");
@@ -126,7 +133,7 @@ public class Structure{
 			
 				queue = new Queue(userOptions.memSize);
 				do{
-					userChoice = queue.getUserInput(Options);
+					userChoice = queue.getUserInput();
 					
 					switch(userChoice){
 						
