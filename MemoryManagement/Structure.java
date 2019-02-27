@@ -41,7 +41,6 @@ public class Structure{
 		char mType = '~';
 		
 		do{
-			
 			System.out.print("\nPlease enter the memory type(S,Q): ");
 			userInput = in.nextLine();
 			userInput = userInput.toUpperCase();
@@ -59,8 +58,8 @@ public class Structure{
 	private static MemOptions userOptions = new MemOptions();
 
 
-	public static void main(String args[]){
-		
+	public static void main(String args[])
+	{
 		Queue queue;
 		Stack stack;
 		
@@ -81,7 +80,7 @@ public class Structure{
 						try{
 							userChoice = stack.getUserInput(Options);
 							choiceInvalid = false;
-						} catch (Exception e){
+						} catch (IllegalArgumentException e){
 							System.out.println("\nChoice invalid!  Please try again.");
 							choiceInvalid = true;
 							continue;
