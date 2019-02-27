@@ -67,9 +67,9 @@ abstract class Memory{
 	
 	
 
-	public int getMemSize(){
+	public void getMemSize(){
 		
-		return this.memory.length;
+		System.out.println("The memory size is: " + this.memory.length);
 		
 	}	// getMemSize()
 
@@ -138,9 +138,7 @@ abstract class Memory{
 
 	
 
-	public Choices getUserInput(Action[] options)
-	
-	{		// Know what the user wants to do.
+	public Choices getUserInput(Action[] options){		// Know what the user wants to do.
 	
 		Scanner in = new Scanner(System.in);
 		String userInput = "";
@@ -163,13 +161,14 @@ abstract class Memory{
 		}
 
 		System.out.print("\n  " + Choices.C + ") " + options[Choices.C.ordinal()].getName());
-		
 		if (this.isEmpty){
 			System.out.print("  (Queue is empty)");
 		} else {
 			System.out.print("  (Queue has contents)");
 		}
 		
+		System.out.println("\n  " + Choices.G + ") " + options[Choices.G.ordinal()].getName());
+
 		System.out.println("\n  " + Choices.Q + ") " + options[Choices.Q.ordinal()].getName());
 
 		System.out.print("\nEnter ");

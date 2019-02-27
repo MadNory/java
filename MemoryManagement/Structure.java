@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-enum Choices { U, O, S, C, Q }	// Possible Actions: Push, Pop, Show, Clear, Quit respectively.
+enum Choices { U, O, S, C, Q, G }	// Possible Actions: Push, Pop, Show, Clear, Quit respectively.
 
 class MemOptions{
 	
@@ -12,7 +12,7 @@ class MemOptions{
 
 public class Structure{
 
-	private static Action Options[] = new Action[Choices.Q.ordinal() + 1];
+	private static Action Options[] = new Action[Choices.values().length];
 
 	
 	private static void buildOptions(){
@@ -21,6 +21,7 @@ public class Structure{
 		Options[Choices.O.ordinal()] = new Action('O', "Pop");
 		Options[Choices.S.ordinal()] = new Action('S', "Show");
 		Options[Choices.C.ordinal()] = new Action('C', "Clear");
+		Options[Choices.G.ordinal()] = new Action('G', "Size");
 		Options[Choices.Q.ordinal()] = new Action('Q', "Quit");
 		
 		return;
@@ -105,6 +106,10 @@ public class Structure{
 							stack.clearMemory();
 							 break;
 						
+						case G:					// getMemSize()
+							stack.getMemSize();
+							 break;
+						
 						case Q:
 							break;
 						
@@ -141,6 +146,10 @@ public class Structure{
 							queue.clearMemory();
 							 break;
 						
+						case G:					// getMemSize()
+							queue.getMemSize();
+							 break;
+
 						case Q:
 							break;
 						
