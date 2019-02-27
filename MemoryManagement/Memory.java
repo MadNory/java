@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.io.*;
 
-class Memory{
+abstract class Memory{
 
 	protected int getloc = 0, putloc = 0;
 	protected int[] memory;
@@ -19,6 +19,32 @@ class Memory{
 
 	}	// constructor()
 
+	
+	abstract int getValue();
+
+	
+	public void pop(){
+
+		if (this.isEmpty){
+
+			System.out.println("\nQueue is empty! There is nothing to pop.");
+			
+		} else {
+	
+			int n = this.getValue();
+			
+			if (n != Integer.MIN_VALUE){
+				System.out.println("\nPopped value: " + n);
+			}
+
+			if (this.isEmpty){
+				System.out.println("Queue is now empty.");
+			}
+		}
+		
+		return;
+
+	}	// pop()
 	
 
 	public void showMemory(){
@@ -117,60 +143,45 @@ class Memory{
 	{		// Know what the user wants to do.
 	
 		Scanner in = new Scanner(System.in);
-		boolean isInputValid = true;
 		String userInput = "";
-	
-		do {
 			
-			System.out.println("\nWhat do you want to do:");
-			
-			System.out.print("\n  " + Choices.U + ") " + options[Choices.U.ordinal()].getName());
-			if (this.isFull){
-				System.out.print("  (Queue is already full)");
-			}
-
-			System.out.print("\n  " + Choices.O + ") " + options[Choices.O.ordinal()].getName());
-			if (this.isEmpty){
-				System.out.print("  (Queue is empty)");
-			}
-			
-			System.out.print("\n  " + Choices.S + ") " + options[Choices.S.ordinal()].getName());
-			if (this.isEmpty){
-				System.out.print("  (Queue is empty)");
-			}
-
-			System.out.print("\n  " + Choices.C + ") " + options[Choices.C.ordinal()].getName());
-			
-			if (this.isEmpty){
-				System.out.print("  (Queue is empty)");
-			} else {
-				System.out.print("  (Queue has contents)");
-			}
-			
-			System.out.println("\n  " + Choices.Q + ") " + options[Choices.Q.ordinal()].getName());
-
-			System.out.print("\nEnter ");
-			
-			for(Choices c: Choices.values()){
-				System.out.print("'" + c + "' ");
-			}
-			
-			System.out.print(": ");
-
-			try {
-				
-				userInput = in.nextLine();
-				isInputValid = true;
-
-			}catch(Exception e){
-				
-				System.out.println("\n Invalid selection.  Please try again.");
-				isInputValid = false;
-				continue;
-			};	
-
-		}while(!isInputValid);
+		System.out.println("\nWhat do you want to do:");
 		
+		System.out.print("\n  " + Choices.U + ") " + options[Choices.U.ordinal()].getName());
+		if (this.isFull){
+			System.out.print("  (Queue is already full)");
+		}
+
+		System.out.print("\n  " + Choices.O + ") " + options[Choices.O.ordinal()].getName());
+		if (this.isEmpty){
+			System.out.print("  (Queue is empty)");
+		}
+		
+		System.out.print("\n  " + Choices.S + ") " + options[Choices.S.ordinal()].getName());
+		if (this.isEmpty){
+			System.out.print("  (Queue is empty)");
+		}
+
+		System.out.print("\n  " + Choices.C + ") " + options[Choices.C.ordinal()].getName());
+		
+		if (this.isEmpty){
+			System.out.print("  (Queue is empty)");
+		} else {
+			System.out.print("  (Queue has contents)");
+		}
+		
+		System.out.println("\n  " + Choices.Q + ") " + options[Choices.Q.ordinal()].getName());
+
+		System.out.print("\nEnter ");
+		
+		for(Choices c: Choices.values()){
+			System.out.print("'" + c + "' ");
+		}
+		
+		System.out.print(": ");
+		
+		userInput = in.nextLine().toUpperCase();
+			
 		return Choices.valueOf(userInput.toUpperCase());
 		
 	}	// getUserInput()
