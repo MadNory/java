@@ -6,7 +6,7 @@ class Stack extends Memory
 	}	// constructor()
 	
 	
-	public int getValue(){
+	protected int getValue(){
 		
 		int retVal = Integer.MIN_VALUE;
 		

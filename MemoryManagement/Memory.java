@@ -115,7 +115,7 @@ abstract class Memory{
 
 	
 
-	public void push(){
+	protected void push(){
 		
 
 		Scanner in = new Scanner(System.in);
@@ -138,7 +138,7 @@ abstract class Memory{
 
 	
 
-	public Choices getUserInput(Action[] options) throws IllegalArgumentException
+	public Choices getUserInput(Action[] options)
 	
 	{		// Know what the user wants to do.
 	

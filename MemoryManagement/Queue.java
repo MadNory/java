@@ -7,7 +7,7 @@ class Queue extends Memory
 
 	
 	
-	public int getValue(){
+	protected int getValue(){
 		
 		int retVal = Integer.MIN_VALUE;
 		
@@ -30,30 +30,6 @@ class Queue extends Memory
 	
 
 
-	public void pop(){
-
-		if (this.isEmpty){
-
-			System.out.println("\nQueue is empty! There is nothing to pop.");
-			
-		} else {
-	
-			int n = this.getValue();
-			
-			if (n != Integer.MIN_VALUE){
-				System.out.println("\nPopped value: " + n);
-			}
-
-			if (this.isEmpty){
-				System.out.println("Queue is now empty.");
-			}
-		}
-		
-		return;
-
-	}	// pop()
-
-	
 	
 	public void push(){
 		
