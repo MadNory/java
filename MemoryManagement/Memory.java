@@ -20,7 +20,7 @@ abstract class Memory{
 	}	// constructor()
 
 	
-	abstract int getValue();
+	abstract int getValue();		// will be implemented in the child class. Pop method will depend on the kind of memory.
 
 	
 	public void pop(){

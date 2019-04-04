@@ -1,6 +1,5 @@
 class Queue extends Memory
 {
-
 	Queue(int memSize){
 		super(memSize);
 	}	// constructor()
@@ -28,7 +27,6 @@ class Queue extends Memory
 
 	}	// getValue()
 	
-
 
 	
 	public void push(){
